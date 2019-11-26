@@ -1,0 +1,8 @@
+﻿  P5.cpp
+c:\users\taruc\desktop\p5\p5\p5.cpp(22): warning C4060: switch statement contains no 'case' or 'default' labels
+c:\users\taruc\desktop\p5\p5\p5.cpp(84): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\taruc\desktop\p5\p5\p5.cpp(99): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\taruc\desktop\p5\p5\p5.cpp(114): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+c:\users\taruc\desktop\p5\p5\p5.cpp(158): warning C4305: '+=': truncation from 'double' to 'float'
+  P5.vcxproj -> C:\Users\TARUC\Desktop\P5\Debug\P5.exe
+  P5.vcxproj -> C:\Users\TARUC\Desktop\P5\Debug\P5.pdb (Partial PDB)
