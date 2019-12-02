@@ -8,7 +8,7 @@
 #pragma comment (lib, "OpenGL32.lib")
 #pragma comment (lib, "GLU32.lib")
 
-#define WINDOW_TITLE "Practical 4"
+#define WINDOW_TITLE "Practical 5"
 float rotatedeg = 0.0;
 
 LRESULT WINAPI WindowProcedure(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
@@ -33,7 +33,6 @@ LRESULT WINAPI WindowProcedure(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 			PostQuitMessage(0);
 			break;
 
-		
 		}
 		break;
 	default:
@@ -76,41 +75,50 @@ bool initPixelFormat(HDC hdc)
 }
 
 void topping() {
-	GLUquadricObj * cyllinder = NULL;
-	cyllinder = gluNewQuadric();
-
-	glColor3f(0, 1, 1);
 	glPushMatrix();
-	glTranslatef(0, 0.27, 0);
-	glRotatef(180, 1, 0, 0);
-	gluQuadricDrawStyle(cyllinder, GLU_FILL);
-	gluCylinder(cyllinder, 0.0, 0.1, 0.1, 20, 20);
-	gluDeleteQuadric(cyllinder);
+	GLUquadricObj* cylinder = NULL;
+	cylinder = gluNewQuadric();
+	glTranslatef(-0.025, 0.27, 0.154);
+	glColor3f(1, 1, 0);
+	glRotatef(110, 1, 1, 0);
+	gluCylinder(cylinder, 0.01, 0.01, 0.01, 15, 15);
+	gluDeleteQuadric(cylinder);
+	glPopMatrix();
+
+	glPushMatrix();
+	cylinder = gluNewQuadric();
+	glTranslatef(0.0, 0.35, 0.11);
+	glColor3ub(255, 128, 0);
+	glRotatef(110, 1, 1, 0);
+	gluCylinder(cylinder, 0.01, 0.01, 0.01, 15, 15);
+	gluDeleteQuadric(cylinder);
+	glPopMatrix();
+
+	glPushMatrix();
+	cylinder = gluNewQuadric();
+	glTranslatef(-0.05, 0.35, 0.1);
+	glColor3ub(255, 255, 51);
+	glRotatef(110, 1, 1, 0);
+	gluCylinder(cylinder, 0.01, 0.01, 0.01, 15, 15);
+	gluDeleteQuadric(cylinder);
 	glPopMatrix();
 }
 
-void icecreamup() {
-	GLUquadricObj * sphere = NULL;
-	sphere = gluNewQuadric();
-
-	glColor3ub(51, 25, 0);
-	
+void icecream() {	
 	glPushMatrix();
+	GLUquadricObj* sphere = NULL;
+	sphere = gluNewQuadric();
+	glColor3ub(51, 25, 0);
 	glTranslatef(0, 0.23, 0);
 	//glRotatef(270, 1, 0, 0);
 	gluQuadricDrawStyle(sphere, GLU_FILL);
 	gluSphere(sphere, 0.16, 30, 30);
 	gluDeleteQuadric(sphere);
 	glPopMatrix();
-}
 
-void icecreamdown() {
-	GLUquadricObj * sphere = NULL;
-	sphere = gluNewQuadric();
-
-	glColor3f(1, 1, 1);
-	
 	glPushMatrix();
+	sphere = gluNewQuadric();
+	glColor3f(1, 1, 1);
 	glTranslatef(0, 0.05, 0);
 	//glRotatef(270, 1, 0, 0);
 	gluQuadricDrawStyle(sphere, GLU_FILL);
@@ -119,28 +127,21 @@ void icecreamdown() {
 	glPopMatrix();
 }
 
-void cylinderUp() {
-	GLUquadricObj * cyllinder = NULL;
-	cyllinder = gluNewQuadric();
-
-	
-	glColor3ub(153, 76, 0);
+void cone() {
 	glPushMatrix();
+	GLUquadricObj* cyllinder = NULL;
+	cyllinder = gluNewQuadric();
+	glColor3ub(153, 76, 0);
 	glTranslatef(0, -0.5, 0);
 	glRotatef(270, 1, 0, 0);
 	gluQuadricDrawStyle(cyllinder, GLU_FILL);
 	gluCylinder(cyllinder, 0.0, 0.18, 0.5, 20, 30);
 	gluDeleteQuadric(cyllinder);
 	glPopMatrix();
-}
 
-void cylinderDown() {
-	GLUquadricObj * cyllinder = NULL;
-	cyllinder = gluNewQuadric();
-
-	
-	glColor3ub(0, 0, 0);
 	glPushMatrix();
+	cyllinder = gluNewQuadric();
+	glColor3ub(0, 0, 0);
 	glTranslatef(0, -0.5, 0);
 	glRotatef(270, 1, 0, 0);
 	gluQuadricDrawStyle(cyllinder, GLU_LINE);
@@ -159,11 +160,9 @@ void display()
 	
 	glPushMatrix();
 	glRotatef(rotatedeg, 0, 1, 0);
+	cone();
+	icecream();
 	topping();
-	icecreamup();
-	icecreamdown();
-	cylinderDown();
-	cylinderUp();
 	glPopMatrix();
 }
 //--------------------------------------------------------------------
