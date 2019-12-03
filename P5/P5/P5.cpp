@@ -18,7 +18,7 @@ LRESULT WINAPI WindowProcedure(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam
 	case WM_CHAR:
 		switch (wParam)
 		{
-		
+
 		}
 		break;
 
@@ -104,7 +104,7 @@ void topping() {
 	glPopMatrix();
 }
 
-void icecream() {	
+void icecream() {
 	glPushMatrix();
 	GLUquadricObj* sphere = NULL;
 	sphere = gluNewQuadric();
@@ -150,19 +150,34 @@ void cone() {
 	glPopMatrix();
 }
 
+void myRoll()
+{
+	GLUquadricObj* var = NULL;
+	var = gluNewQuadric();
+
+	glPushMatrix();
+	glColor3ub(87, 48, 0);
+	glTranslatef(0.05, 0.25, 0.05);
+	glRotatef(-90, 1, 0, 1);
+	//gluQuadricDrawStyle(var, GLU_LINE);
+	gluCylinder(var, 0.03f, 0.03f, 0.3f, 32, 32);
+	glPopMatrix();
+}
+
 void display()
 {
 	glClear(GL_COLOR_BUFFER_BIT);
 	glClear(GL_DEPTH_BUFFER_BIT);
 	glEnable(GL_DEPTH_TEST);
-	
-	rotatedeg += 0.1;
-	
+
+	rotatedeg += 0.05;
+
 	glPushMatrix();
 	glRotatef(rotatedeg, 0, 1, 0);
 	cone();
 	icecream();
 	topping();
+	myRoll();
 	glPopMatrix();
 }
 //--------------------------------------------------------------------
@@ -219,7 +234,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE prevInstance,
 			DispatchMessage(&msg);
 		}
 
-		
+
 		display();
 
 		SwapBuffers(hdc);
